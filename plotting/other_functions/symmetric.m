@@ -1,0 +1,15 @@
+function sym = symmetric(angle)
+% check if the angles form a symmetric shape
+
+ang_sort = sort(angle); % sort angles in ascending order
+x = 5.*cosd(ang_sort); y = 5.*sind(ang_sort); % calculate x & y of four corners
+h = polyshape(x,y); % create this polygon
+[cx, cy] = centroid(h); % detect the centroid of this polygon
+
+if ~cx | ~cy % if cx == 0 or cy == 0
+    sym = 1; % symmetric
+else
+    sym = 0; % asymmetric
+end
+
+end
